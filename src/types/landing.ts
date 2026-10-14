@@ -132,6 +132,72 @@ export interface ProductVariant {
   badge?: string;
 }
 
+export interface PreOrderModalStepLabels {
+  step1: string;
+  step2: string;
+  step3: string;
+}
+
+export interface PreOrderSizingOption {
+  id: string;
+  title: string;
+  subtitle: string;
+  isRecommended?: boolean;
+}
+
+export interface PreOrderModalContent {
+  badge: string;
+  title: string;
+  subtitle: string;
+  urgencyText: string;
+  steps: PreOrderModalStepLabels;
+  sizing: {
+    sendSizingKit: PreOrderSizingOption;
+    manualSize: {
+      id: string;
+      title: string;
+      subtitle: string;
+      sizes: number[];
+    };
+  };
+  form: {
+    fullNameLabel: string;
+    fullNamePlaceholder: string;
+    phoneLabel: string;
+    phonePlaceholder: string;
+    phoneHelpText: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    addressLabel: string;
+    addressPlaceholder: string;
+    pincodeLabel: string;
+    pincodePlaceholder: string;
+  };
+  summary: {
+    title: string;
+    pricingNote: string;
+    freeShippingBadge: string;
+    payLaterBadge: string;
+    guaranteeText: string;
+  };
+  buttons: {
+    continueToShipping: string;
+    back: string;
+    confirmReservation: string;
+    submitting: string;
+  };
+  success: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    orderPrefix: string;
+    nextStepsTitle: string;
+    nextSteps: string[];
+    whatsappCtaText: string;
+    closeButtonText: string;
+  };
+}
+
 export interface LandingContent {
   brand: {
     name: string;
@@ -143,6 +209,7 @@ export interface LandingContent {
   features: FeaturesContent;
   faq: FAQContent;
   pricing: PricingContent;
+  preOrderModal?: PreOrderModalContent;
   product: {
     id: string;
     title: string;
@@ -167,3 +234,4 @@ export interface LandingContent {
     subtext: string;
   };
 }
+

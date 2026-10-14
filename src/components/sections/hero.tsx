@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import { ArrowRight, Star, ShieldCheck, Truck, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { heroContent, type HeroContent } from "@/data/landing-content";
+import { usePreOrderModal } from "@/context/pre-order-modal-context";
+import { trackEvent } from "@/lib/analytics";
 
 const trustIconMap: Record<"truck" | "shield", LucideIcon> = {
   truck: Truck,
@@ -14,6 +18,15 @@ interface HeroProps {
 
 export function Hero({ content = heroContent }: HeroProps) {
   const { badge, headline, subheadline, ctas, trustPoints, productVisual } = content;
+  const { openModal } = usePreOrderModal();
+
+  const handlePrimaryClick = (): void => {
+    trackEvent("cta_click", {
+      section: "hero",
+      cta_text: ctas.primary.text,
+    });
+    openModal();
+  };
 
   return (
     <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 bg-white">
@@ -45,11 +58,13 @@ export function Hero({ content = heroContent }: HeroProps) {
 
             {/* CTAs */}
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <a href={ctas.primary.href} className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto gap-2 text-base px-8">
-                  {ctas.primary.text} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Button>
-              </a>
+              <Button
+                onClick={handlePrimaryClick}
+                size="lg"
+                className="w-full sm:w-auto gap-2 text-base px-8"
+              >
+                {ctas.primary.text} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
               <a href={ctas.secondary.href} className="w-full sm:w-auto">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   {ctas.secondary.text}

@@ -4,8 +4,10 @@ import type {
   FeaturesContent,
   FAQContent,
   PricingContent,
+  PreOrderModalContent,
   LandingContent,
 } from "@/types/landing";
+
 
 // Re-export all schema types for convenience and backwards compatibility
 export type * from "@/types/landing";
@@ -223,6 +225,72 @@ export const pricingContent: PricingContent = {
   ],
 };
 
+export const preOrderModalContent: PreOrderModalContent = {
+  badge: "Limited Launch Batch • Save 40%",
+  title: "Reserve Your Vysta Aura",
+  subtitle: "Lock in 40% Founder's Discount. Free Sizing Kit included.",
+  urgencyText: "Only 14 units left in Batch #1. Reservation held for 10:00 mins.",
+  steps: {
+    step1: "1. Finish & Size",
+    step2: "2. Delivery Info",
+    step3: "3. VIP Confirmation",
+  },
+  sizing: {
+    sendSizingKit: {
+      id: "sizing-kit",
+      title: "Send Free Sizing Kit First",
+      subtitle: "Recommended. Try sample rings for 24h at home, then confirm your ring size via WhatsApp.",
+      isRecommended: true,
+    },
+    manualSize: {
+      id: "manual-size",
+      title: "I already know my ring size",
+      subtitle: "Standard US ring sizes from 6 to 13.",
+      sizes: [6, 7, 8, 9, 10, 11, 12, 13],
+    },
+  },
+  form: {
+    fullNameLabel: "Full Name",
+    fullNamePlaceholder: "e.g. John Doe",
+    phoneLabel: "WhatsApp / Mobile Number",
+    phonePlaceholder: "+91 9XXXX XXXX0",
+    phoneHelpText: "We will send sizing kit tracking updates directly on WhatsApp.",
+    emailLabel: "Email Address (Optional)",
+    emailPlaceholder: "john@example.com",
+    addressLabel: "Delivery Address",
+    addressPlaceholder: "Flat, House no., Building, Street / Area",
+    pincodeLabel: "Pincode & City",
+    pincodePlaceholder: "e.g. 560001, Bangalore",
+  },
+  summary: {
+    title: "Reservation Summary",
+    pricingNote: "Zero Advance Payment Required",
+    freeShippingBadge: "Free Insured Express Delivery",
+    payLaterBadge: "Pay via UPI / COD on Delivery",
+    guaranteeText: "30-Night Risk-Free Sleep Trial with 100% Full Refund Guarantee.",
+  },
+  buttons: {
+    continueToShipping: "Continue to Delivery Details",
+    back: "Back",
+    confirmReservation: "Confirm VIP Reservation (₹0 Now)",
+    submitting: "Securing Batch Allocation...",
+  },
+  success: {
+    badge: "VIP Founder Reservation Confirmed",
+    title: "You're in the Founder's Circle!",
+    subtitle: "Your Vysta Aura launch batch allocation is locked in.",
+    orderPrefix: "VYSTA-AUR-",
+    nextStepsTitle: "What happens next?",
+    nextSteps: [
+      "Your Complimentary Sizing Kit will be dispatched within 24 hours.",
+      "Wear sample rings for 24h to select your favorite finger & fit.",
+      "Confirm your size via WhatsApp to dispatch your aerospace titanium ring.",
+    ],
+    whatsappCtaText: "Join Founder WhatsApp Group",
+    closeButtonText: "Done & Back to Store",
+  },
+};
+
 export const landingContent: LandingContent = {
   brand: {
     name: "Vysta Aura",
@@ -234,6 +302,7 @@ export const landingContent: LandingContent = {
   features: featuresContent,
   faq: faqContent,
   pricing: pricingContent,
+  preOrderModal: preOrderModalContent,
   product: {
     id: "vysta-aura-gen1",
     title: "Vysta Aura Smart Ring",

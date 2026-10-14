@@ -1,0 +1,86 @@
+Bhai ab batao apne ko kyaa kyaa karna hai? List bana do. Aur usko save kar lete hain as a prompt jisse hum inko implement kar lenge. Aur haan woh headless wala kaam bhi karna hai. Strapi wala.
+11:32 AM
+Bhai, piche ek chhota sa network disconnect ho gaya tha, lekin maine aapka Master Implementation Roadmap poora plan karke save kar diya hai!
+
+Aap ise yahan dekh sakte ho: 
+cro_headless_master_roadmap.md
+.
+
+📌 Humara 5-Phase Master Plan (Summary):
+Phase	Kaam	Fayda (Client Impact)
+Phase 1	Modal Content & Step-by-Step Rebuild	Saara text landing-content.ts me aayega, zero hardcoding. Code 100% digestible hoga.
+Phase 2	Live Lead Capture (Google Sheets / Webhook)	Form bharte hi lead live Google Sheet me tapkegi — Demo ka Magic Moment!
+Phase 3	Headless CMS Integration (Strapi)	Marketer bina code chhooye admin panel se headline aur prices badal sakega.
+Phase 4	Zero-Flicker A/B Testing Engine	Variant A vs Variant B live test chalega (High-ticket CRO pitch).
+Phase 5	95+ Lighthouse Score & WhatsApp Share Card	WhatsApp pe luxury card preview + ultra-fast mobile performance.
+
+"Bhai, hum Pre-Order modal step-by-step bana rahe the, aage continue karte hain!"
+
+🟢 Screen 1: Finish & Size Selection
+┌────────────────────────────────────────────────────────┐
+│  ⚡ Limited Launch Batch • Save 40%                   [X]
+│  Reserve Your Vysta Aura                               │
+│  Lock in Founder's discount. Sizing kit ships first.  │
+├────────────────────────────────────────────────────────┤
+│  Step: (1) Finish & Size ─── 2. Shipping ─── 3. Done   │
+│                                                        │
+│  Choose Finish:                                        │
+│  [⚫ Matte Black]   [⚪ Silver Titanium]   [🟡 Rose Gold]│
+│                                                        │
+│  Sizing Preference:                                    │
+│  ┌───────────────────────────────────────────────────┐ │
+│  │ 🔘 Send Free Sizing Kit First (Recommended)       │ │
+│  │    Sample rings ghar aayenge, 24h pehno, WhatsApp  │ │
+│  │    pe size confirm karo.                           │ │
+│  └───────────────────────────────────────────────────┘ │
+│  ┌───────────────────────────────────────────────────┐ │
+│  │ ⚪ I already know my ring size                    │ │
+│  │    [ 6 ] [ 7 ] [ 8 ] [ 9 ] [ 10 ] [ 11 ] [ 12 ]   │ │
+│  └───────────────────────────────────────────────────┘ │
+│                                                        │
+│  Price: ₹14,999 (Original ₹24,999 — 40% Off)           │
+│                                                        │
+│  [  Continue to Delivery Details ➔  ]                 │
+└────────────────────────────────────────────────────────┘
+
+🟡 Screen 2: Delivery & Contact (Lead Capture)
+┌────────────────────────────────────────────────────────┐
+│  Where should we ship your Sizing Kit?            [X] │
+├────────────────────────────────────────────────────────┤
+│  Step: ✓ Finish ─── (2) Shipping ─── 3. Done           │
+│                                                        │
+│  Full Name:                                            │
+│  [ e.g. Abhinav Sharma                               ] │
+│                                                        │
+│  WhatsApp / Mobile Number:                             │
+│  [ +91 98765 43210                                   ] │
+│  (Dispatch tracking WhatsApp pe aayega)                │
+│                                                        │
+│  Delivery Address & Pincode:                           │
+│  [ Flat / Street / Area                              ] │
+│  [ Pincode, City                                     ] │
+│                                                        │
+│  🛡️ Zero Advance Payment: Pay ₹0 Now (COD / Pay Later) │
+│                                                        │
+│  [ ⬅ Back ]   [  Confirm VIP Reservation (₹0 Now)  ]   │
+└────────────────────────────────────────────────────────┘
+
+🟣 Screen 3: VIP Confirmation (Order Done!)
+┌────────────────────────────────────────────────────────┐
+│                        ✅                              │
+│             You're in the Founder's Circle!            │
+│                 Reservation #VYSTA-892401              │
+├────────────────────────────────────────────────────────┤
+│  Allocated for Abhinav — Matte Black (Sizing Kit First)│
+│                                                        │
+│  Agla step kya hoga?                                   │
+│  1. 24 ghante ke andar Free Sizing Kit dispatch hoga.  │
+│  2. Ghar pe sample pehan kar size choose karo.         │
+│  3. WhatsApp pe size batate hi Titanium ring ship hogi.│
+│                                                        │
+│  [ 💬 Join Founder WhatsApp Group / Get Updates ]      │
+│  [ Back to Store ]                                     │
+└────────────────────────────────────────────────────────┘
+++
+
+

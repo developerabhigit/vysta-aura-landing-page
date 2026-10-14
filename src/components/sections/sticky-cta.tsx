@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { pricingContent, type PricingContent } from "@/data/landing-content";
+import { usePreOrderModal } from "@/context/pre-order-modal-context";
 
 interface StickyCTAProps {
   content?: PricingContent;
@@ -11,6 +12,7 @@ interface StickyCTAProps {
 
 export function StickyCTA({ content = pricingContent }: StickyCTAProps) {
   const [show, setShow] = useState<boolean>(false);
+  const { openModal } = usePreOrderModal();
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -30,6 +32,7 @@ export function StickyCTA({ content = pricingContent }: StickyCTAProps) {
       item_name: content.productTitle,
       price: content.discountedPrice,
     });
+    openModal();
   };
 
   const discountLabel =
@@ -50,11 +53,9 @@ export function StickyCTA({ content = pricingContent }: StickyCTAProps) {
           </span>
         </div>
       </div>
-      <a href="#order" onClick={handleClick}>
-        <Button size="sm" className="px-5 font-bold shadow-sm">
-          Claim {discountLabel}
-        </Button>
-      </a>
+      <Button onClick={handleClick} size="sm" className="px-5 font-bold shadow-sm">
+        Claim {discountLabel}
+      </Button>
     </div>
   );
 }

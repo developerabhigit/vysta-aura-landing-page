@@ -1,7 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { usePreOrderModal } from "@/context/pre-order-modal-context";
+import { trackEvent } from "@/lib/analytics";
 
 export function Navbar() {
+  const { openModal } = usePreOrderModal();
+
+  const handlePreOrder = () => {
+    trackEvent("cta_click", {
+      section: "navbar",
+      cta_text: "Pre-Order Now",
+    });
+    openModal();
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -31,11 +45,9 @@ export function Navbar() {
 
         {/* Sticky Primary CTA */}
         <div className="flex items-center gap-3">
-          <a href="#order">
-            <Button size="sm" className="px-4">
-              Pre-Order Now
-            </Button>
-          </a>
+          <Button onClick={handlePreOrder} size="sm" className="px-4">
+            Pre-Order Now
+          </Button>
         </div>
       </div>
     </header>
