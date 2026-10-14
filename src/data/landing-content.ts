@@ -1,90 +1,11 @@
-export interface HeroBadge {
-  stars: number;
-  text: string;
-}
+import type {
+  HeroContent,
+  FAQContent,
+  LandingContent,
+} from "@/types/landing";
 
-export interface HeroHeadline {
-  primary: string;
-  highlight: string;
-}
-
-export interface HeroCTAItem {
-  text: string;
-  href: string;
-}
-
-export interface HeroCTAs {
-  primary: HeroCTAItem;
-  secondary: HeroCTAItem;
-}
-
-export interface HeroTrustPoint {
-  icon: "truck" | "shield";
-  text: string;
-}
-
-export interface HeroProductMetric {
-  label: string;
-  value: string;
-  status: string;
-}
-
-export interface HeroProductVisual {
-  metric: HeroProductMetric;
-  badges: {
-    topLeft: string;
-    bottomRight: string;
-  };
-}
-
-export interface HeroContent {
-  badge: HeroBadge;
-  headline: HeroHeadline;
-  subheadline: string;
-  ctas: HeroCTAs;
-  trustPoints: HeroTrustPoint[];
-  productVisual: HeroProductVisual;
-}
-
-export interface ProductVariant {
-  id: string;
-  name: string;
-  colorName: string;
-  colorHex: string;
-  badge?: string;
-}
-
-export interface LandingContent {
-  brand: {
-    name: string;
-    tagline: string;
-    supportEmail: string;
-  };
-  hero: HeroContent;
-  product: {
-    id: string;
-    title: string;
-    headline: string;
-    subheadline: string;
-    originalPrice: number;
-    salePrice: number;
-    currencySymbol: string;
-    currencyCode: string;
-    rating: number;
-    reviewsCount: number;
-    stockUrgencyText: string;
-    variants: ProductVariant[];
-  };
-  valueProps: Array<{
-    title: string;
-    desc: string;
-    badge: string;
-  }>;
-  guarantee: {
-    headline: string;
-    subtext: string;
-  };
-}
+// Re-export all schema types for convenience and backwards compatibility
+export type * from "@/types/landing";
 
 export const heroContent: HeroContent = {
   badge: {
@@ -130,6 +51,44 @@ export const heroContent: HeroContent = {
   },
 };
 
+export const faqContent: FAQContent = {
+  badge: "Frequently Asked Questions",
+  title: "Frequently Asked Questions",
+  subtitle: "Everything you need to know before ordering.",
+  items: [
+    {
+      question: "How does the free sizing kit work and how do I find my size?",
+      answer:
+        "Every order includes a complimentary Sizing Kit shipped first. Wear sample rings for 24 hours to ensure a comfortable fit across daytime and sleeping, confirm your size in the app, and we'll dispatch your custom titanium ring immediately.",
+    },
+    {
+      question: "Is there really zero monthly subscription fee for the app?",
+      answer:
+        "Zero subscriptions, 100% free forever. Unlike other smart rings that charge ₹500–₹1,000 every month just to view your health data, Vysta Aura includes lifetime access to all biometric analytics, sleep stage analysis, and recovery tracking with no paywalls or hidden charges.",
+    },
+    {
+      question: "What is the battery life and how does charging work?",
+      answer:
+        "Vysta Aura delivers up to 7 full days of continuous biometric telemetry on a single charge. The included magnetic charging dock powers the ring to 100% in approximately 60 minutes, so a quick top-up once a week is all you need.",
+    },
+    {
+      question: "Can I wear Vysta Aura while swimming, showering, or working out?",
+      answer:
+        "Yes. Vysta Aura is 5 ATM water-resistant (submersible up to 50 meters). You can safely wear it in the shower, swimming pool, ocean, or during high-intensity sweat sessions without taking it off.",
+    },
+    {
+      question: "How does Vysta Aura compare to smartwatches?",
+      answer:
+        "Vysta Aura delivers medical-grade biometric accuracy directly from the digital arteries of the finger with zero screen distractions, zero notification fatigue, and a 7-day battery life compared to daily smartwatch charging.",
+    },
+    {
+      question: "What is your return policy and warranty?",
+      answer:
+        "We offer a 30-Night Risk-Free Sleep Trial. If you don't feel a measurable difference in your sleep and recovery insights, return it for a 100% full refund with free return pickup. Every ring also includes a 1-year comprehensive hardware warranty.",
+    },
+  ],
+};
+
 export const landingContent: LandingContent = {
   brand: {
     name: "Vysta Aura",
@@ -137,6 +96,7 @@ export const landingContent: LandingContent = {
     supportEmail: "concierge@vysta.io",
   },
   hero: heroContent,
+  faq: faqContent,
   product: {
     id: "vysta-aura-gen1",
     title: "Vysta Aura Smart Ring",
