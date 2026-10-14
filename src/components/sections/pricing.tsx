@@ -1,52 +1,45 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ShieldCheck, Truck, RefreshCw } from "lucide-react";
+import { Check, ShieldCheck, Truck, RefreshCw, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
+import { pricingContent, type PricingContent, type PricingVariant } from "@/data/landing-content";
 
-// 1. Color Variant ka Type-Safe Interface
-interface ColorVariant {
-  id: string;
-  name: string;
-  badgeColor: string;
-  ringClass: string;
+const pricingIconMap: Record<"truck" | "refresh" | "shield", LucideIcon> = {
+  truck: Truck,
+  refresh: RefreshCw,
+  shield: ShieldCheck,
+};
+
+interface PricingProps {
+  content?: PricingContent;
 }
 
-const colorVariants: ColorVariant[] = [
-  {
-    id: "matte-black",
-    name: "Matte Black",
-    badgeColor: "bg-zinc-950",
-    ringClass: "ring-zinc-950 text-zinc-950 border-zinc-950",
-  },
-  {
-    id: "silver-titanium",
-    name: "Silver Titanium",
-    badgeColor: "bg-zinc-400",
-    ringClass: "ring-zinc-500 text-zinc-800 border-zinc-500",
-  },
-  {
-    id: "rose-gold",
-    name: "Rose Gold",
-    badgeColor: "bg-amber-300",
-    ringClass: "ring-amber-500 text-amber-900 border-amber-500",
-  },
-];
+export function Pricing({ content = pricingContent }: PricingProps) {
+  const {
+    batchBadge,
+    title,
+    subtitle,
+    productTitle,
+    productSubtitle,
+    originalPrice,
+    discountedPrice,
+    currencySymbol,
+    currencyCode,
+    discountBadge,
+    variants,
+    foundersPerks,
+    guaranteeText,
+    ctaText,
+    shippingNote,
+    trustBadges,
+  } = content;
 
-const includedItems: string[] = [
-  "Aerospace Grade Titanium Smart Ring",
-  "Complimentary Free Sizing Kit (shipped first)",
-  "Magnetic Fast-Charging Dock + Braided USB-C Cable",
-  "Lifetime App Access (Zero Monthly Subscriptions)",
-  "1-Year Comprehensive Hardware Warranty",
-];
+  // Active Selected Finish State
+  const [selectedColor, setSelectedColor] = useState<PricingVariant>(variants[0]);
 
-export function Pricing() {
-  // 2. Active Selected Color State
-  const [selectedColor, setSelectedColor] = useState<ColorVariant>(colorVariants[0]);
-
-  const handleColorSelect = (variant: ColorVariant): void => {
+  const handleColorSelect = (variant: PricingVariant): void => {
     setSelectedColor(variant);
     trackEvent("select_item_variant", {
       variant_name: variant.name,
@@ -56,13 +49,14 @@ export function Pricing() {
 
   const handlePreOrder = (): void => {
     trackEvent("begin_checkout", {
-      item_name: "Vysta Aura Titanium Edition",
+      section: "pricing",
+      item_name: productTitle,
       selected_variant: selectedColor.name,
-      price: 14999,
-      currency: "INR",
-      discount: "40%",
+      price: discountedPrice,
+      currency: currencyCode,
+      discount: discountBadge,
     });
-    
+
     alert(`Redirecting to Secure Checkout for [${selectedColor.name}]...`);
   };
 
@@ -73,13 +67,13 @@ export function Pricing() {
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3 py-1 rounded-full">
-            Limited Launch Batch
+            {batchBadge}
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950">
-            Secure Your Vysta Aura
+            {title}
           </h2>
           <p className="mt-2 text-sm sm:text-base text-zinc-700">
-            Lock in launch pricing today. Receive the sizing kit first, confirm your fit, and get your custom ring.
+            {subtitle}
           </p>
         </div>
 
@@ -88,15 +82,24 @@ export function Pricing() {
           
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-8 border-b border-zinc-200">
             <div>
-              <h3 className="text-2xl font-extrabold text-zinc-950">Vysta Aura Titanium Edition</h3>
-              <p className="text-xs text-zinc-600 mt-1">Select your preferred titanium finish below</p>
+              <h3 className="text-2xl font-extrabold text-zinc-950">{productTitle}</h3>
+              <p className="text-xs text-zinc-600 mt-1">{productSubtitle}</p>
             </div>
             <div className="text-left sm:text-right">
               <div className="flex items-baseline gap-2">
-                <span className="text-sm line-through text-zinc-500 font-semibold" aria-label="Original price ₹24,999">₹24,999</span>
-                <span className="text-3xl sm:text-4xl font-black text-zinc-950">₹14,999</span>
+                <span
+                  className="text-sm line-through text-zinc-500 font-semibold"
+                  aria-label={`Original price ${currencySymbol}${originalPrice.toLocaleString()}`}
+                >
+                  {currencySymbol}{originalPrice.toLocaleString()}
+                </span>
+                <span className="text-3xl sm:text-4xl font-black text-zinc-950">
+                  {currencySymbol}{discountedPrice.toLocaleString()}
+                </span>
               </div>
-              <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wide">Save 40% Today</span>
+              <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wide">
+                {discountBadge}
+              </span>
             </div>
           </div>
 
@@ -106,7 +109,7 @@ export function Pricing() {
               Finish: <span className="text-zinc-950 font-extrabold">{selectedColor.name}</span>
             </label>
             <div className="flex flex-wrap gap-3">
-              {colorVariants.map((variant: ColorVariant) => {
+              {variants.map((variant: PricingVariant) => {
                 const isSelected = selectedColor.id === variant.id;
                 return (
                   <button
@@ -127,13 +130,13 @@ export function Pricing() {
             </div>
           </div>
 
-          {/* Included Items */}
+          {/* Founder's Edition Perks */}
           <div className="py-6">
             <p className="text-xs font-bold uppercase tracking-wider text-zinc-700 mb-4">
-              What&apos;s Included In The Box:
+              Founder&apos;s Edition Perks &amp; In-Box Items:
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-800">
-              {includedItems.map((item: string, idx: number) => (
+              {foundersPerks.map((item: string, idx: number) => (
                 <li key={idx} className="flex items-center gap-2.5">
                   <div className="h-5 w-5 shrink-0 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center">
                     <Check className="h-3 w-3 stroke-[3]" aria-hidden="true" />
@@ -151,27 +154,29 @@ export function Pricing() {
               className="w-full text-base font-bold py-4 active:scale-[0.99] transition-transform"
               onClick={handlePreOrder}
             >
-              Pre-Order {selectedColor.name} — ₹14,999
+              {ctaText} {selectedColor.name} — {currencySymbol}{discountedPrice.toLocaleString()}
             </Button>
             <p className="text-center text-xs text-zinc-600">
-              Free Express Delivery in 2-4 business days. COD available.
+              {shippingNote}
             </p>
           </div>
 
+          {/* Guarantee Banner */}
+          <div className="mt-5 rounded-xl bg-amber-50/70 border border-amber-200/90 p-3.5 text-center text-xs text-amber-950 leading-relaxed font-medium">
+            🛡️ <span className="font-semibold">{guaranteeText}</span>
+          </div>
+
           {/* Trust Badges */}
-          <div className="mt-8 pt-6 border-t border-zinc-200 grid grid-cols-3 gap-2 text-center text-[11px] font-medium text-zinc-700">
-            <div className="flex flex-col items-center gap-1">
-              <Truck className="h-4 w-4 text-zinc-900" aria-hidden="true" />
-              <span>Free Shipping</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <RefreshCw className="h-4 w-4 text-zinc-900" aria-hidden="true" />
-              <span>30-Day Hassle-Free Returns</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <ShieldCheck className="h-4 w-4 text-zinc-900" aria-hidden="true" />
-              <span>1-Year Official Warranty</span>
-            </div>
+          <div className="mt-6 pt-6 border-t border-zinc-200 grid grid-cols-3 gap-2 text-center text-[11px] font-medium text-zinc-700">
+            {trustBadges.map((badge, idx) => {
+              const Icon = pricingIconMap[badge.icon] ?? ShieldCheck;
+              return (
+                <div key={idx} className="flex flex-col items-center gap-1">
+                  <Icon className="h-4 w-4 text-zinc-900" aria-hidden="true" />
+                  <span>{badge.text}</span>
+                </div>
+              );
+            })}
           </div>
 
         </div>

@@ -1,6 +1,7 @@
 import type {
   HeroContent,
   FAQContent,
+  PricingContent,
   LandingContent,
 } from "@/types/landing";
 
@@ -89,6 +90,70 @@ export const faqContent: FAQContent = {
   ],
 };
 
+export const pricingContent: PricingContent = {
+  batchBadge: "Limited Launch Batch",
+  title: "Secure Your Vysta Aura",
+  subtitle:
+    "Lock in launch pricing today. Receive the sizing kit first, confirm your fit, and get your custom ring.",
+  productTitle: "Vysta Aura Titanium Edition",
+  productSubtitle: "Select your preferred titanium finish below",
+  originalPrice: 24999,
+  discountedPrice: 14999,
+  currencySymbol: "₹",
+  currencyCode: "INR",
+  discountBadge: "Save 40% Today",
+  variants: [
+    {
+      id: "matte-black",
+      name: "Matte Black",
+      colorName: "Stealth Obsidian",
+      colorHex: "#18181b",
+      badgeColor: "bg-zinc-950",
+      badge: "Best Seller",
+    },
+    {
+      id: "silver-titanium",
+      name: "Silver Titanium",
+      colorName: "Raw Aerospace Silver",
+      colorHex: "#e4e4e7",
+      badgeColor: "bg-zinc-400",
+    },
+    {
+      id: "rose-gold",
+      name: "Rose Gold",
+      colorName: "18K Brushed Rose Gold",
+      colorHex: "#e0a899",
+      badgeColor: "bg-amber-300",
+    },
+  ],
+  foundersPerks: [
+    "Aerospace Grade Titanium Smart Ring",
+    "Complimentary Free Sizing Kit (shipped first)",
+    "Magnetic Fast-Charging Dock + Braided USB-C Cable",
+    "Lifetime App Access (Zero Monthly Subscriptions)",
+    "1-Year Comprehensive Hardware Warranty",
+    "Founder's Priority OTA Firmware Access",
+  ],
+  guaranteeText:
+    "Risk-Free 30-Night Sleep Trial: If you don't feel a measurable difference in your sleep, return it for a full refund. We even pay for return pickup.",
+  ctaText: "Pre-Order",
+  shippingNote: "Free Express Delivery in 2-4 business days. COD available.",
+  trustBadges: [
+    {
+      icon: "truck",
+      text: "Free Shipping",
+    },
+    {
+      icon: "refresh",
+      text: "30-Day Hassle-Free Returns",
+    },
+    {
+      icon: "shield",
+      text: "1-Year Official Warranty",
+    },
+  ],
+};
+
 export const landingContent: LandingContent = {
   brand: {
     name: "Vysta Aura",
@@ -97,6 +162,7 @@ export const landingContent: LandingContent = {
   },
   hero: heroContent,
   faq: faqContent,
+  pricing: pricingContent,
   product: {
     id: "vysta-aura-gen1",
     title: "Vysta Aura Smart Ring",

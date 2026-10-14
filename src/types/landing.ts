@@ -58,6 +58,39 @@ export interface FAQContent {
   items: FAQItem[];
 }
 
+export interface PricingVariant {
+  id: string;
+  name: string;
+  colorName: string;
+  colorHex: string;
+  badgeColor: string;
+  badge?: string;
+}
+
+export interface PricingTrustBadge {
+  icon: "truck" | "refresh" | "shield";
+  text: string;
+}
+
+export interface PricingContent {
+  batchBadge: string;
+  title: string;
+  subtitle: string;
+  productTitle: string;
+  productSubtitle: string;
+  originalPrice: number;
+  discountedPrice: number;
+  currencySymbol: string;
+  currencyCode: string;
+  discountBadge: string;
+  variants: PricingVariant[];
+  foundersPerks: string[];
+  guaranteeText: string;
+  ctaText: string;
+  shippingNote: string;
+  trustBadges: PricingTrustBadge[];
+}
+
 export interface ProductVariant {
   id: string;
   name: string;
@@ -74,6 +107,7 @@ export interface LandingContent {
   };
   hero: HeroContent;
   faq: FAQContent;
+  pricing: PricingContent;
   product: {
     id: string;
     title: string;
