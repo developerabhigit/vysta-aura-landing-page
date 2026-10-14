@@ -91,6 +91,39 @@ export interface PricingContent {
   trustBadges: PricingTrustBadge[];
 }
 
+export interface FeatureItem {
+  icon: "moon" | "shield" | "battery" | "activity";
+  title: string;
+  description: string;
+}
+
+export interface FeaturesContent {
+  badge: string;
+  title: string;
+  subtitle: string;
+  items: FeatureItem[];
+}
+
+export interface SocialProofMetric {
+  icon: "heart" | "battery" | "award" | "sparkles";
+  value: string;
+  label: string;
+}
+
+export interface SocialProofReview {
+  quote: string;
+  author: string;
+  role: string;
+  rating: number;
+}
+
+export interface SocialProofContent {
+  publicationsTitle: string;
+  publications: string[];
+  metrics: SocialProofMetric[];
+  earlyReview?: SocialProofReview;
+}
+
 export interface ProductVariant {
   id: string;
   name: string;
@@ -106,6 +139,8 @@ export interface LandingContent {
     supportEmail: string;
   };
   hero: HeroContent;
+  socialProof: SocialProofContent;
+  features: FeaturesContent;
   faq: FAQContent;
   pricing: PricingContent;
   product: {

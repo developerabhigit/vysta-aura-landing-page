@@ -1,5 +1,7 @@
 import type {
   HeroContent,
+  SocialProofContent,
+  FeaturesContent,
   FAQContent,
   PricingContent,
   LandingContent,
@@ -50,6 +52,73 @@ export const heroContent: HeroContent = {
       bottomRight: "💧 50m Water Resistant",
     },
   },
+};
+
+export const socialProofContent: SocialProofContent = {
+  publicationsTitle: "Recognized by Leading Tech & Health Publications",
+  publications: ["TECHCRUNCH", "WIRED", "FORBES HEALTH", "THE VERGE", "GQ FITNESS"],
+  metrics: [
+    {
+      icon: "heart",
+      value: "99.4%",
+      label: "Heart Rate Accuracy",
+    },
+    {
+      icon: "battery",
+      value: "7 Days",
+      label: "Continuous Battery Life",
+    },
+    {
+      icon: "award",
+      value: "Grade 5",
+      label: "Aerospace Titanium",
+    },
+    {
+      icon: "sparkles",
+      value: "10M+",
+      label: "Sleep Hours Tracked",
+    },
+  ],
+  earlyReview: {
+    quote:
+      "The sleep staging and HRV recovery scoring are identical to my clinical lab tests, but in an ultra-sleek ring with zero screen distractions.",
+    author: "Dr. Alok Verma",
+    role: "Sports Cardiologist & Early Founder Member",
+    rating: 5,
+  },
+};
+
+export const featuresContent: FeaturesContent = {
+  badge: "Engineered For Precision",
+  title: "Intelligent Health Insights. Without Screen Addiction.",
+  subtitle:
+    "No vibrating screens, no notification anxiety. Just clean, medical-grade biometrics quietly synchronizing with your phone.",
+  items: [
+    {
+      icon: "moon",
+      title: "Medical-Grade Sleep Staging",
+      description:
+        "Pinpoint your REM, light, and deep sleep cycles. Wake up refreshed with precise smart recovery insights and circadian rhythm guidance every morning.",
+    },
+    {
+      icon: "shield",
+      title: "Grade-5 Aerospace Titanium Build",
+      description:
+        "Forged from ultra-lightweight, skin-safe Grade 5 titanium with scratch-resistant PVD coating. Featherlight 2.4g profile with 5 ATM water resistance.",
+    },
+    {
+      icon: "battery",
+      title: "7-Day Continuous Battery Life",
+      description:
+        "Autonomous biometric telemetry around the clock on a single 60-minute charge. Zero weekly charging anxiety or sleep tracking interruptions.",
+    },
+    {
+      icon: "activity",
+      title: "Continuous Biometric & HRV Sensors",
+      description:
+        "Infrared and multi-wavelength optical PPG sensors capturing 24/7 heart rate variability, SpO2, and micro-fluctuations in skin temperature.",
+    },
+  ],
 };
 
 export const faqContent: FAQContent = {
@@ -161,6 +230,8 @@ export const landingContent: LandingContent = {
     supportEmail: "concierge@vysta.io",
   },
   hero: heroContent,
+  socialProof: socialProofContent,
+  features: featuresContent,
   faq: faqContent,
   pricing: pricingContent,
   product: {
